@@ -4,7 +4,8 @@ set -x
 
 # update and upgrade server
 sudo apt-get update & sudo apt-get upgrade -y
-
+# Docker
+echo "DOCKER INSTALL - START"
 # Install libraries
 sudo apt install apt-transport-https ca-certificates curl software-properties-common
 
@@ -27,3 +28,4 @@ id -nG
 
 # show running
 sudo systemctl status docker
+echo "DOCKER INSTALL - COMPLETE"
