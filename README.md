@@ -39,7 +39,11 @@ For full setup, this will create a user (e.g. mike) and install docker and pytho
 REMEMBER THIS IS RUNNING AS ROOT
 ```console
 $ cd ..
-$ y
+$ ./scripts/setup.sh mike
 ```
-for Python or Docker standalone
-Assuming this is run from a non-root user who can perform sudo.
+
+For Python or Docker standalone
+Assumption: Run from a non-root user who can perform sudo.
+```console
+$ ./scripts/<filenam>.sh
+```
