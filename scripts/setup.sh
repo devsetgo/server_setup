@@ -6,13 +6,15 @@ set -x
 echo "SYSTEM SETUP - START"
 
 sudo apt-get update & sudo apt-get upgrade -y
+
+# start User setup
 echo "USER SETUP - START"
 user_name=${1?Error: no name given}
-# # add user from input
+# add user from input
 adduser $user_name
-# # add user to sudo
+# add user to sudo
 usermod -aG sudo $user_name
-# # external login
+# add external login
 rsync --archive --chown=$user_name:$user_name ~/.ssh /home/$user_name
 
 echo "now test if the user ($user_name) can login"
@@ -45,17 +47,16 @@ add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu fo
 sudo apt update
 
 # install docker
-sudo apt install docker-ce
+sudo apt install docker-ce -y
+
+echo "DOCKER INSTALL - COMPLETE"
+echo "DOCKER Add $user_name to group"
 
 # add user 
 usermod -aG docker $user_name
+echo "Switching to $user_name"
+echo "Try command 'id -nG' to see user $user_name is added to sudo and docker"
+echo "Run 'systemctl status docker' to confirm docker running"
+echo "Run 'Docker ps' to see if docker commands are useable"
+echo "If all pass, then setup is complete and you can login as $user_name"
 su - $user_name
-id -nG
-
-# show running
-systemctl status docker
-echo "DOCKER INSTALL - COMPLETE"
-
-# anything else?
-
-echo "SYSTEM SETUP - COMPLETE"
