@@ -20,4 +20,6 @@ sudo apt install wget -y
 ./wsl/setup_java.sh
 # store git credentials for Github
 git config --global credential.helper store -y
+# Copy Repos
+
 echo "General Setup - COMPLETE"
