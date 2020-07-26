@@ -1,5 +1,5 @@
-# Ubuntu Server Setup 
-These scripts should work on Ubuntu 18.04 and 20.04 LTS. The scripts are used to setup my server(s) on Digital Ocean. 
+# Ubuntu Server Setup
+These scripts should work on Ubuntu 18.04 and 20.04 LTS. The scripts are used to setup my server(s) on Digital Ocean.
 
 These are not heavily tested, as I do this maybe once or twice a year. So treat it accordingly.
 
@@ -34,7 +34,7 @@ $ chmod +x script.sh
 ```
 
 **Run Scripts**
-    
+
 For full setup, this will create a user (e.g. mike) and install docker and python.
 REMEMBER THIS IS RUNNING AS ROOT
 ```console
