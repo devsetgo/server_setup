@@ -21,7 +21,7 @@ sudo apt update
 # install docker
 sudo apt install docker-ce
 
-# add user 
+# add user
 sudo usermod -aG docker ${USER}
 su - ${USER}
 id -nG

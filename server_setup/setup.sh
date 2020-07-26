@@ -52,7 +52,7 @@ sudo apt install docker-ce -y
 echo "DOCKER INSTALL - COMPLETE"
 echo "DOCKER Add $user_name to group"
 
-# add user 
+# add user
 usermod -aG docker $user_name
 echo "Switching to $user_name"
 echo "Try command 'id -nG' to see user $user_name is added to sudo and docker"
