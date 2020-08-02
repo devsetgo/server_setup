@@ -18,8 +18,9 @@ sudo apt install wget -y
 ./wsl/setup_javascript.sh
 # JAVA
 ./wsl/setup_java.sh
+# Hugo
+./wsl/setup_hugo.sh
 # store git credentials for Github
 git config --global credential.helper store -y
-# Copy Repos
-
 echo "General Setup - COMPLETE"
+echo "Run Python Github utility to clone all public repos"
