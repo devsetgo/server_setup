@@ -1,6 +1,6 @@
 #Project Files
 _venv/
-
+github_copy/report.txt
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
