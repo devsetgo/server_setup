@@ -40,59 +40,10 @@ To use just clone the repo. You can also curl any of the scripts and change the 
 
     $ python3 -venv _venv
     $ source _venv/bin/activate
+    $ pip3 install --upgrade pip setuptools wheel
     $ pip3 install -r github_copy/requirements.txt
     $ cd ..
     $ python3 server_setup/github_copy/run.py
     $
     ```
-
-
-
-
-
-
-## Get and Execute Scripts
-<!-- 
-**Start**
-```console
-    $ mkdir setup_scripts
-    $ cd setup_scripts
-```
-
-**Get Script(s)**
-
-- **Full Setup (user, python, docker)**
-    ```console
-    $ curl -O https://raw.githubusercontent.com/devsetgo/server_setup/dev/scripts/setup_.sh
-    ```
-- **Python setup**
-    ```console
-    $ curl -O https://raw.githubusercontent.com/devsetgo/server_setup/dev/scripts/setup_.sh
-    ```
-- **Docker Setup**
-    ```console
-    $ curl -O https://raw.githubusercontent.com/devsetgo/server_setup/dev/scripts/setup_.sh
-    ```
-
-**Make script(s) Executable**
-
-```console
-$ chmod +x script.sh
-```
-
-**Run Scripts**
-
-For full setup, this will create a user (e.g. mike) and install docker and python.
-REMEMBER THIS IS RUNNING AS ROOT
-```console
-$ cd ..
-$ ./scripts/setup.sh mike
-```
-
-For Python or Docker standalone
-Assumption: Run from a non-root user who can perform sudo.
-```console
-$ ./scripts/<filenam>.sh
-``` -->
-
 
