@@ -38,14 +38,15 @@ To use just clone the repo. You can also curl any of the scripts and change the 
 - **Clone Repos** from the server_setup main folder
 ```console
 
-    $ python3 -venv _venv
+    $ python3 -m venv _venv
     $ source _venv/bin/activate
     $ pip3 install --upgrade pip setuptools wheel
     $ pip3 install -r github_copy/requirements.txt
-    $ cd ..
+    $ cd .. ***this will take you one folder up to your home***
     $ python3 server_setup/github_copy/run.py
-    $
+    $ deactivate
 ```
+
 
 ## Other Suff
 Please note, this is not the most secure way of securing credentials. You will need to get a Personal Access Token (https://github.com/settings/tokens).
@@ -59,3 +60,12 @@ Please note, this is not the most secure way of securing credentials. You will n
     $ git config --global user.password "your token"
 
 ```
+
+- **Git Branch Cleanup**
+```console
+
+    $ git fetch
+    $ git remote prune origin
+
+```
+
