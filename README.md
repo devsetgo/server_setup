@@ -51,11 +51,11 @@ To use just clone the repo. You can also curl any of the scripts and change the 
 Please note, this is not the most secure way of securing credentials. You will need to get a Personal Access Token (https://github.com/settings/tokens).
 
 - **Git Credentials**
-    ```console
+```console
 
     $ git config --global credential.helper store
     $ git config --global user.name "Your Name"
     $ git config --global user.email "youremail@yourdomain.com"
     $ git config --global user.password "your token"
 
-    ```
+```
