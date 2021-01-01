@@ -56,6 +56,6 @@ Please note, this is not the most secure way of securing credentials. You will n
     $ git config --global credential.helper store
     $ git config --global user.name "Your Name"
     $ git config --global user.email "youremail@yourdomain.com"
-    $ git config --global password
+    $ git config --global user.password "your token"
 
     ```
