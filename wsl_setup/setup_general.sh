@@ -10,6 +10,7 @@ sudo apt-get update && sudo apt-get upgrade -y
 sudo apt install git -y
 # wget
 sudo apt install wget -y
+sudo apt install net-tools -y
 # run installers
 # Python
 ./wsl_setup/setup_python.sh
