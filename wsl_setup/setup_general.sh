@@ -23,12 +23,12 @@ sudo apt install net-tools -y
 # Hugo
 ./wsl_setup/setup_hugo.sh
 # install microk8s
-./wsl_setup/ubuntu-wsl2-systemd-script.sh
+# ./wsl_setup/ubuntu-wsl2-systemd-script.sh
 # Add the user to the microk8s group
-USERNAME=$(whoami)
-sudo usermod -a -G microk8s $USERNAME
+# USERNAME=$(whoami)
+# sudo usermod -a -G microk8s $USERNAME
 # Set the ownership of the .kube directory back to the user
-sudo chown -f -R $USERNAME ~/.kube
+# sudo chown -f -R $USERNAME ~/.kube
 
 # store git credentials for Github
 echo -n "git user name (e.g. mike): "
