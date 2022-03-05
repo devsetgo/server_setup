@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import logging
+from math import fabs
 import os
 import time
 
@@ -16,18 +17,21 @@ def setup_repos(git_url: str):
     try:
         os.system(f"git clone {git_url}")
         return 1
-    # os.system("git fetch")
+    
     except Exception as e:
         logging.warning(e)
         return 0
 
 
 @click.command()
-@click.option("--github_profile", prompt="github profile name", help="e.g. devsetgo")
+@click.option("--github_profile", prompt="github profile name", help="e.g. devsetgo", default="devsetgo")
 @click.option(
-    "--max_repos", prompt="maximum number of public repos to retrieve", help="e.g. 50"
+    "--max_repos", prompt="maximum number of public repos to retrieve", help="e.g. 100", default="100"
 )
-def call_api(github_profile, max_repos):
+@click.option(
+    "--skip_archive", prompt="skip archived repos", help="e.g. yes, no, y, or n", default="yes"
+)
+def call_api(github_profile, max_repos, skip_archive):
     """
     call Github API for User
     Loop through all repos and call
@@ -51,13 +55,27 @@ def call_api(github_profile, max_repos):
     logging.info(f"Fetching Repos for {github_profile}")
     data = r.json()
 
-    tasks = [setup_repos(d["clone_url"]) for d in data]
+    if skip_archive == "yes" or skip_archive == "y":
+        new_data = skip_archived(repos=data)
+    else:
+        new_data = data
+
+    tasks = [setup_repos(d["clone_url"]) for d in new_data]
     results = [task.result() for task in tasks]
 
-    count = sum(results)
+    # print(new_results)
+    print(type(results))
+    count = len(results)
 
     t1 = time.time() - t0
     print(f"{count} repos cloned in {t1:.2f} seconds.")
+
+def skip_archived(repos:list)->list:
+    new_list:list=[]
+    for repo in repos:
+        if repo["archived"]==False:
+            new_list.append(repo)
+    return new_list
 
 
 if __name__ == "__main__":
