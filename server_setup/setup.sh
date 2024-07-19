@@ -16,23 +16,28 @@ if [ -z "$user_name" ]; then
 fi
 # add user from input
 adduser $user_name
-# add user to sudo
+# add user to sudo group
 usermod -aG sudo $user_name
 # add external login
 rsync --archive --chown=$user_name:$user_name ~/.ssh /home/$user_name
 
 echo "now test if the user ($user_name) can login"
 echo "USER SETUP - START"
+
 # Python
 echo "PYTHON3 INSTALL - START"
 # setup Python3
 python3 -V
+
 # Install pip
 apt install -y python3-pip
+
 # update pip
 pip3 install --upgrade pip setuptools wheel
+
 # install build libraries
 apt install -y build-essential libssl-dev libffi-dev python3-dev
+
 # install venv
 apt install -y python3-venv
 echo "PYTHON3 INSTALL - COMPLETE"
