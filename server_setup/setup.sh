@@ -5,7 +5,7 @@ set -x
 # System
 echo "SYSTEM SETUP - START"
 
-sudo apt-get update & sudo apt-get upgrade -y
+sudo apt-get update && sudo apt-get upgrade -y
 
 # start User setup
 echo "USER SETUP - START"
