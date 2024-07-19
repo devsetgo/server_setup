@@ -9,7 +9,11 @@ sudo apt-get update & sudo apt-get upgrade -y
 
 # start User setup
 echo "USER SETUP - START"
-user_name=${1?Error: no name given}
+read -p "Enter username: " user_name
+if [ -z "$user_name" ]; then
+  echo "Error: No name given"
+  exit 1
+fi
 # add user from input
 adduser $user_name
 # add user to sudo

@@ -1,4 +1,4 @@
-requests==2.25.1 # from none
-unsync==1.3
-tqdm==4.55.0
-click
+click==8.1.7 #  From none |   Vulnerabilities: None
+requests==2.32.3 #  From 2.25.1 |   Vulnerabilities: None
+tqdm==4.66.4 #  From 4.55.0 |   Vulnerabilities: None
+unsync==1.4.0 #  From 1.3 |   Vulnerabilities: None
