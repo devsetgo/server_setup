@@ -12,17 +12,18 @@ To use just clone the repo. You can also curl any of the scripts and change the 
 - **Git Clone** <-- Easiest
 ```console
 
-    $ git clone https://github.com/devsetgo/server_setup.git
-    $ cd server_setup
-    $ ./server_setup/setup.sh
+    apt install git
+    git clone https://github.com/devsetgo/server_setup.git
+    cd server_setup
+    ./server_setup/setup.sh
 ```
 - **Curl and Permissions set** <-- change url for whatever script you want to use
 ```console
 
-    $ curl -O https://github.com/devsetgo/server_setup/blob/master/server_setup/setup.sh
+    curl -O https://github.com/devsetgo/server_setup/blob/master/server_setup/setup.sh
 
-    $ chmod +x script.sh
-    $ ./setup.sh
+    chmod +x script.sh
+    ./setup.sh
 ```
 
 ## WSL2 Setup
@@ -30,21 +31,21 @@ To use just clone the repo. You can also curl any of the scripts and change the 
 - **Git Clone**
 ```console
 
-    $ git clone https://github.com/devsetgo/server_setup.git
-    $ cd server_setup
-    $ ./wsl_setup/setup_general.sh
+    git clone https://github.com/devsetgo/server_setup.git
+    cd server_setup
+    ./wsl_setup/setup_general.sh
 
 ```
 - **Clone Repos** from the server_setup main folder
 ```console
 
-    $ python3 -m venv _venv
-    $ source _venv/bin/activate
-    $ pip3 install --upgrade pip setuptools wheel
-    $ pip3 install -r github_copy/requirements.txt
-    $ cd .. ***this will take you one folder up to your home***
-    $ python3 server_setup/github_copy/run.py
-    $ deactivate
+    python3 -m venv _venv
+    source _venv/bin/activate
+    pip3 install --upgrade pip setuptools wheel
+    pip3 install -r github_copy/requirements.txt
+    cd .. ***this will take you one folder up to your home***
+    python3 server_setup/github_copy/run.py
+    deactivate
 ```
 
 
@@ -54,18 +55,18 @@ Please note, this is not the most secure way of securing credentials. You will n
 - **Git Credentials**
 ```console
 
-    $ git config --global credential.helper store
-    $ git config --global user.name "Your Name"
-    $ git config --global user.email "youremail@yourdomain.com"
-    $ git config --global user.password "your token"
+    git config --global credential.helper store
+    git config --global user.name "Your Name"
+    git config --global user.email "youremail@yourdomain.com"
+    git config --global user.password "your token"
 
 ```
 
 - **Git Branch Cleanup**
 ```console
 
-    $ git fetch
-    $ git remote prune origin
+    git fetch
+    git remote prune origin
 
 ```
 
