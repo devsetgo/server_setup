@@ -1,15 +1,3 @@
-#!/bin/bash
-set -e
-set -x
-
-# System
-echo "SYSTEM SETUP - START"
-
-sudo apt-get update && sudo apt-get upgrade -y
-
-# start User setup
-echo "USER SETUP - START"
-read -p "Enter username: " user_name
 if [ -z "$user_name" ]; then
   echo "Error: No name given"
   exit 1
@@ -22,6 +10,14 @@ usermod -aG sudo $user_name
 if [ -z "$user_name" ]; then
   echo "User name not set. Please export user_name variable."
   exit 1
+fi
+
+# Install rsync if not already installed
+if ! command -v rsync &> /dev/null
+then
+    echo "rsync could not be found, installing..."
+    apt-get update
+    apt-get install -y rsync
 fi
 
 # add external login
