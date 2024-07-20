@@ -1,3 +1,15 @@
+#!/bin/bash
+set -e
+set -x
+
+# System
+echo "SYSTEM SETUP - START"
+
+sudo apt-get update && sudo apt-get upgrade -y
+
+# start User setup
+echo "USER SETUP - START"
+read -p "Enter username: " user_name
 if [ -z "$user_name" ]; then
   echo "Error: No name given"
   exit 1
@@ -36,6 +48,12 @@ apt-get install -y python3-pip
 
 # update pip
 pip3 install --upgrade pip setuptools wheel
+
+# install build libraries
+apt-get install -y build-essential libssl-dev libffi-dev python3-dev
+
+# install venv
+apt-get install -y python3-venv
 
 # install build libraries
 apt-get install -y build-essential libssl-dev libffi-dev python3-dev
