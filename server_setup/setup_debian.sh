@@ -43,23 +43,21 @@ echo "PYTHON3 INSTALL - START"
 # setup Python3
 python3 -V
 
-# Install pip
-apt-get install -y python3-pip
-
-# update pip
-pip3 install --upgrade pip setuptools wheel
-
-# install build libraries
-apt-get install -y build-essential libssl-dev libffi-dev python3-dev
-
-# install venv
+# Install python3-venv for creating virtual environments
 apt-get install -y python3-venv
 
-# install build libraries
-apt-get install -y build-essential libssl-dev libffi-dev python3-dev
+# Create a virtual environment
+python3 -m venv /opt/myvenv
 
-# install venv
-apt-get install -y python3-venv
+# Activate the virtual environment
+source /opt/myvenv/bin/activate
+
+# Now that the virtual environment is activated, use pip to install packages
+pip install --upgrade pip setuptools wheel
+
+# Deactivate the virtual environment when done
+deactivate
+
 echo "PYTHON3 INSTALL - COMPLETE"
 # Docker
 echo "DOCKER INSTALL - START"
