@@ -18,6 +18,12 @@ fi
 adduser $user_name
 # add user to sudo group
 usermod -aG sudo $user_name
+# Ensure the user variable is set
+if [ -z "$user_name" ]; then
+  echo "User name not set. Please export user_name variable."
+  exit 1
+fi
+
 # add external login
 rsync --archive --chown=$user_name:$user_name ~/.ssh /home/$user_name
 
@@ -30,42 +36,42 @@ echo "PYTHON3 INSTALL - START"
 python3 -V
 
 # Install pip
-apt install -y python3-pip
+apt-get install -y python3-pip
 
 # update pip
 pip3 install --upgrade pip setuptools wheel
 
 # install build libraries
-apt install -y build-essential libssl-dev libffi-dev python3-dev
+apt-get install -y build-essential libssl-dev libffi-dev python3-dev
 
 # install venv
-apt install -y python3-venv
+apt-get install -y python3-venv
 echo "PYTHON3 INSTALL - COMPLETE"
 # Docker
 echo "DOCKER INSTALL - START"
 # Install libraries
-apt install apt-transport-https ca-certificates curl software-properties-common
+apt-get install -y apt-transport-https ca-certificates curl software-properties-common
 
 # GPG Key
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add -
 
 # add docker repo
-add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable"
+echo "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable" | tee /etc/apt/sources.list.d/docker.list
 
 # update
-sudo apt update
+apt-get update
 
 # install docker
-sudo apt install docker-ce -y
+apt-get install -y docker-ce docker-ce-cli containerd.io
 
 echo "DOCKER INSTALL - COMPLETE"
 echo "DOCKER Add $user_name to group"
 
-# add user
+# add user to docker group
 usermod -aG docker $user_name
+
 echo "Switching to $user_name"
-echo "Try command 'id -nG' to see user $user_name is added to sudo and docker"
-echo "Run 'systemctl status docker' to confirm docker running"
-echo "Run 'Docker ps' to see if docker commands are useable"
-echo "If all pass, then setup is complete and you can login as $user_name"
-su - $user_name
+echo "Try command 'id -nG' to see if user $user_name is added to sudo and docker groups."
+echo "Run 'systemctl status docker' to confirm Docker is running."
+echo "Run 'docker ps' to see if Docker commands are usable."
+echo "If all pass, then setup is complete, and you can login as $user_name."
