@@ -2,6 +2,12 @@
 set -e
 set -x
 
+# Ensure the script is run as root
+if [ "$(id -u)" != "0" ]; then
+   echo "This script must be run as root" 1>&2
+   exit 1
+fi
+
 # System
 echo "SYSTEM SETUP - START"
 
@@ -18,11 +24,6 @@ fi
 adduser $user_name
 # add user to sudo group
 usermod -aG sudo $user_name
-# Ensure the user variable is set
-if [ -z "$user_name" ]; then
-  echo "User name not set. Please export user_name variable."
-  exit 1
-fi
 
 # Install rsync if not already installed
 if ! command -v rsync &> /dev/null
@@ -69,3 +70,5 @@ echo "Run 'systemctl status docker' to confirm Docker is running."
 echo "Run 'docker ps' to see if Docker commands are usable."
 echo "If all pass, then setup is complete, and you can login as $user_name."
 su - $user_name
+
+echo "SETUP COMPLETE"
