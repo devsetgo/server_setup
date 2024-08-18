@@ -15,7 +15,7 @@ To use just clone the repo. You can also curl any of the scripts and change the 
     apt install git
     git clone https://github.com/devsetgo/server_setup.git
     cd server_setup
-    ./server_setup/setup.sh
+    ./server_setup/setup_ubuntu.sh
 ```
 - **Curl and Permissions set** <-- change url for whatever script you want to use
 ```console
